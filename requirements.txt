@@ -1,6 +1,6 @@
 Django==3.0.7
 djangorestframework==3.11.0
-Pillow==7.1.0
+Pillow==8.4.0
 
 # Rest
 django-cors-headers==3.2.1
@@ -8,8 +8,8 @@ djangorestframework-simplejwt==5.0.0
 
 # Database
 dj-database-url==0.5.0
-mysqlclient==1.4.6
-psycopg2==2.8.4
+mysqlclient==2.1.0
+psycopg2==2.8.6
 
 
 #Heroku
