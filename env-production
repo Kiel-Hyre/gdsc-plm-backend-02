@@ -1,5 +1,5 @@
 export SECRET_KEY = "ask-the-owner-for-production-key"
 export DEBUG = 0
-export ALLOWED_HOST = ""
+export ALLOWED_HOSTS = ""
 export DATABASE_URL = ""
 # "postgresql://<yourusername>:<yourpassword>@<yourhost>:<yourport>/<yourdatabase>"

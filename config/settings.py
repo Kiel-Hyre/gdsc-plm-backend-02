@@ -27,6 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'change-me')
 DEBUG = os.environ.get('DEBUG', '0') == '1'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+# raise Exception(ALLOWED_HOSTS)
 
 
 # Application definition
@@ -87,15 +88,15 @@ _sqlite3_db = 'sqlite:///{}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
 _DB = os.environ.get('DATABASE_URL')
 DEFAULT_DB = _DB or _sqlite3_db
 # test your db
-# raise Exception(DEFAULT_DB)
+# raise Exception(dj_database_url.parse(DEFAULT_DB))
 
 DATABASES = {
     'default': dj_database_url.parse(DEFAULT_DB),
 }
-
-for i in DATABASES.values():
-    if i['ENGINE'] == 'django.db.backends.oracle':
-        i['OPTIONS'] = {'threaded': True}
+# raise Exception(DATABASES)
+# for i in DATABASES.values():
+#     if i['ENGINE'] == 'django.db.backends.oracle':
+#         i['OPTIONS'] = {'threaded': True}
 
 
 # Password validation
@@ -160,8 +161,3 @@ CORS_ORIGIN_ALLOW_ALL = True
 MIDDLEWARE_CLASSES = (
     'whitenoise.middleware.WhiteNoiseMiddleware',
 )
-
-
-# https://devcenter.heroku.com/articles/django-app-configuration
-# Activate Django-Heroku.
-django_heroku.settings(locals())
