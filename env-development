@@ -1,0 +1,5 @@
+export SECRET_KEY = "change-me"
+export DEBUG = 1
+export ALLOWED_HOST = "*"
+export DATABASE_URL = ""
+# "postgresql://<yourusername>:<yourpassword>@<yourhost>:<yourport>/<yourdatabase>"
