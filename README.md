@@ -90,3 +90,52 @@ for windows
 ```
     python3 manage.py runserver (port) # default is 8000
 ```
+
+## GDSC-PLM-BACKEND-02
+
+## BACKEND ACTIVITY 01
+
+- Create a user api using simpleJWT
+
+- Installation and plugin it was very easy just follow the quickstart provided by
+simpleJWT [here](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html)
+
+- By default it will provide an access and refresh token
+
+- An example of a successful response from access is:
+```
+    {
+        refresh: #some hash
+        access: # some hash
+    }
+```
+
+- An example of a successful refresh is:
+```
+    {
+        access: # some hash
+    }
+```
+
+- Though it satisfy our common needs sometimes it best to override the output e.g inserting the user in the response
+- Therefore we need to change some of the methods provided by the default
+- By using python concepts and OOP concept we achieved it
+
+- Therefore /token/ should provided like this
+```
+    {
+        refresh: # some hash
+        access: # some hash
+        username : username
+        email: email
+    }
+```
+- And /token/refresh/ should output like /token/
+
+
+- Some methods can also be made like /access/ wherein it just throw again the provided response
+    Which common api when reloading a page with constant update versus storing it to a localstorage
+- And /logout/ in which it revokes a token
+
+- But its for you to explore :)
+
