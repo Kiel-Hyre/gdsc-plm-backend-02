@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import (
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import generics, status
+from rest_framework import generics, status, filters
 
 from . import serializers
 
@@ -24,6 +24,8 @@ class AccountsUsersView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = serializers.AccountsUserSerializer
     permission_classes = [IsAuthenticated,]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['username', 'email']
 
     def get_queryset(self):
         return self.queryset.exclude(id=self.request.user.pk)
