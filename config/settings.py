@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # APPS BELOW
     #'api',
     'api.accounts',
+    'api.calendars',
 ]
 
 MIDDLEWARE = [
