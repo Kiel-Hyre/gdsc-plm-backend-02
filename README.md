@@ -93,7 +93,6 @@ for windows
 
 ## GDSC-PLM-BACKEND-02
 
-## BACKEND ACTIVITY 04
+## DEV
 
-- This is just an extra feature wherein there is an api that allows of user creation.
-- Upon success login them to the system.
+- This is where all features being PR tooks place.
