@@ -93,17 +93,13 @@ for windows
 
 ## GDSC-PLM-BACKEND-02
 
-## BACKEND ACTIVITY 02
+## BACKEND ACTIVITY 03
 
-- Create a calendar - event app
-- In this lesson, we should learn or had an idea to some more advanced ORM
-- We are gonna use the ForeignKey and ManyToManyField to define a relationship between models/table
-- This was a class definition of joining in standard SQL
-
-- Also were are gonna apply the basic APIView and use some generic Viewset provided by the DRF library
-
-- ModelSerializer was commonly used in this activity because it was easy to use! (check out the documentation)
-
-- Aside from that we are gonna see the benefits of a custom admin (another documentation)
-
-- Yes documentation is the key!
+- Here we are gonna document our apis
+- There are several methods to do it:
+    - Handwriting
+    - Files
+    - Google Docs / Microsoft docx
+    - OpenAPI
+- Here we are gonna use OPENAPI since its automated and easy to use!
+- [link](https://drf-spectacular.readthedocs.io/en/latest/readme.html)
