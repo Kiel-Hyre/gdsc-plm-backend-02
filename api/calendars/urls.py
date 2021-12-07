@@ -9,7 +9,8 @@ urlpatterns = [
     path('events/update/<str:pk>/', views.EventsUpdateView.as_view(), name='events-update'),
     path('events/delete/<str:pk>/', views.EventsDeleteView.as_view(), name='events-delete'),
 
-    # path('invites/', views.Invites.as_view(), name='invites'),
-    # path('invites/accept/<str:pk>/', views.InvitesAccept.as_view(), name='invites-accept'),
-    # path('invites/decline/<str:pk>/', views.InvitesDecline.as_view(), name='invites-decline'),
+    #
+    path('invites/accept/<str:pk>/', views.InvitesAcceptView.as_view(), name='invites-accept'),
+    path('invites/deny/<str:pk>/', views.InvitesDenyView.as_view(), name='invites-deny'),
+    path('invites/', views.InvitesView.as_view(), name='invites'),
 ]

@@ -39,6 +39,6 @@ class Invite(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return '{event} invite to {user}'.format(event=self.event, user=self.user.username)
+        return '{event} invite to {user}'.format(event=self.event, user=self.to_user.username)
 
 
