@@ -93,49 +93,17 @@ for windows
 
 ## GDSC-PLM-BACKEND-02
 
-## BACKEND ACTIVITY 01
+## BACKEND ACTIVITY 02
 
-- Create a user api using simpleJWT
+- Create a calendar - event app
+- In this lesson, we should learn or had an idea to some more advanced ORM
+- We are gonna use the ForeignKey and ManyToManyField to define a relationship between models/table
+- This was a class definition of joining in standard SQL
 
-- Installation and plugin it was very easy just follow the quickstart provided by
-simpleJWT [here](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html)
+- Also were are gonna apply the basic APIView and use some generic Viewset provided by the DRF library
 
-- By default it will provide an access and refresh token
+- ModelSerializer was commonly used in this activity because it was easy to use! (check out the documentation)
 
-- An example of a successful response from access is:
-```
-    {
-        refresh: #some hash
-        access: # some hash
-    }
-```
+- Aside from that we are gonna see the benefits of a custom admin (another documentation)
 
-- An example of a successful refresh is:
-```
-    {
-        access: # some hash
-    }
-```
-
-- Though it satisfy our common needs sometimes it best to override the output e.g inserting the user in the response
-- Therefore we need to change some of the methods provided by the default
-- By using python concepts and OOP concept we achieved it
-
-- Therefore /token/ should provided like this
-```
-    {
-        refresh: # some hash
-        access: # some hash
-        username : username
-        email: email
-    }
-```
-- And /token/refresh/ should output like /token/
-
-
-- Some methods can also be made like /access/ wherein it just throw again the provided response
-    Which common api when reloading a page with constant update versus storing it to a localstorage
-- And /logout/ in which it revokes a token
-
-- But its for you to explore :)
-
+- Yes documentation is the key!
