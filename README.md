@@ -93,6 +93,7 @@ for windows
 
 ## GDSC-PLM-BACKEND-02
 
-## DEV
+## STABLE
 
-- This is where all features being PR tooks place.
+- Finally a production ready branch
+- [link]()
