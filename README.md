@@ -90,3 +90,9 @@ for windows
 ```
     python3 manage.py runserver (port) # default is 8000
 ```
+
+## GDSC-PLM-BACKEND-02
+
+## DEV
+
+- This is where all features being PR tooks place.
