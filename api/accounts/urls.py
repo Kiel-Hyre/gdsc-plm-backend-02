@@ -15,4 +15,6 @@ urlpatterns = [
     path('token/refresh/', views.AccountsTokenRefreshView.as_view(), name='accounts_token_refresh'),
 
     path('users/', views.AccountsUsersView.as_view(), name='accounts_users'),
+
+    path('register/', views.AccountsRegisterView.as_view(), name='accounts_register'),
 ]

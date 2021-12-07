@@ -29,3 +29,6 @@ class AccountsUsersView(generics.ListAPIView):
 
     def get_queryset(self):
         return self.queryset.exclude(id=self.request.user.pk)
+
+class AccountsRegisterView(TokenObtainPairView):
+    serializer_class = serializers.AccountsRegisterSerializer
