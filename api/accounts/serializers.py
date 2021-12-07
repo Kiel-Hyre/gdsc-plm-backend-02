@@ -1,3 +1,5 @@
+from django.contrib.auth import get_user_model
+
 from rest_framework import exceptions, serializers
 from rest_framework_simplejwt.serializers import (
     TokenObtainPairSerializer,
@@ -6,6 +8,9 @@ from rest_framework_simplejwt.serializers import (
 
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework_simplejwt.authentication import JWTAuthentication
+
+User = get_user_model()
+
 
 class AccountsTokenObtainPairSerializer(TokenObtainPairSerializer):
 
@@ -34,3 +39,9 @@ class AccountsTokenRefreshSerializer(TokenRefreshSerializer):
         data['groups'] = self.user.groups.values_list('name', flat=True)
 
         return data
+
+class AccountsUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email',]
