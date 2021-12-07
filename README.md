@@ -93,13 +93,7 @@ for windows
 
 ## GDSC-PLM-BACKEND-02
 
-## BACKEND ACTIVITY 03
+## BACKEND ACTIVITY 04
 
-- Here we are gonna document our apis
-- There are several methods to do it:
-    - Handwriting
-    - Files
-    - Google Docs / Microsoft docx
-    - OpenAPI
-- Here we are gonna use OPENAPI since its automated and easy to use!
-- [link](https://drf-spectacular.readthedocs.io/en/latest/readme.html)
+- This is just an extra feature wherein there is an api that allows of user creation.
+- Upon success login them to the system.

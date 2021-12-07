@@ -1,11 +1,12 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
 
 from rest_framework import exceptions, serializers
 from rest_framework_simplejwt.serializers import (
     TokenObtainPairSerializer,
     TokenRefreshSerializer
 )
-
+from rest_framework.exceptions import ValidationError
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
@@ -39,6 +40,31 @@ class AccountsTokenRefreshSerializer(TokenRefreshSerializer):
         data['groups'] = self.user.groups.values_list('name', flat=True)
 
         return data
+
+
+class AccountsRegisterSerializer(TokenObtainPairSerializer):
+    email = serializers.EmailField()
+
+    def validate(self, attrs):
+        data = attrs
+        if User.objects.filter(username=data['username']).exists():
+            raise ValidationError('Username has already existed.')
+
+        user = User(username=data['username'], email=data['email']) # not commiting
+        validate_password(data['password'], user)
+
+        # if success
+        user.set_password(data.pop('password'))
+        user.save()
+
+        refresh = self.get_token(user)
+        data['refresh'] = str(refresh)
+        data['access'] = str(refresh.access_token)
+        data['username'] = user.username
+        data['email'] = user.email
+        data['groups'] = user.groups.values_list('name', flat=True)
+        return data
+
 
 class AccountsUserSerializer(serializers.ModelSerializer):
 
