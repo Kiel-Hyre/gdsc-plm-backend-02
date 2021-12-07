@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
+from drf_spectacular.utils import extend_schema
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -26,6 +27,7 @@ class EventsView(generics.ListAPIView):
 class EventsGetView(APIView):
     permission_classes = [IsAuthenticated,]
 
+    @extend_schema(responses={200:serializers.EventsGetOutputSerializer})
     def get(self, request, pk):
         obj = get_object_or_404(models.Event, pk=pk, created_by=self.request.user)
         return Response(serializers.EventsGetOutputSerializer(obj).data)
@@ -34,6 +36,8 @@ class EventsGetView(APIView):
 class EventsCreateView(APIView):
     permission_classes = [IsAuthenticated,]
 
+    @extend_schema(request=serializers.EventsCreateSerializer,
+        responses={200:serializers.EventsGetOutputSerializer})
     def post(self, request):
         serializer = serializers.EventsCreateSerializer(data=request.data)
         # DIY, try to create a validations
@@ -49,6 +53,8 @@ class EventsCreateView(APIView):
 class EventsUpdateView(APIView):
     permission_classes = [IsAuthenticated,]
 
+    @extend_schema(request=serializers.EventsCreateSerializer,
+        responses={200:serializers.EventsGetOutputSerializer})
     def put(self, request, pk):
         obj = get_object_or_404(models.Event, pk=pk, created_by=self.request.user)
         serializer = serializers.EventsCreateSerializer(obj, data=request.data, partial=True)
@@ -64,6 +70,7 @@ class EventsUpdateView(APIView):
 class EventsDeleteView(APIView):
     permission_classes = [IsAuthenticated,]
 
+    @extend_schema(responses={200:serializers.DeleteYASG})
     def delete(self, request, pk):
         obj = get_object_or_404(models.Event, pk=pk, created_by=self.request.user)
         obj.delete()
@@ -81,6 +88,7 @@ class InvitesView(generics.ListAPIView):
 
 class InvitesAcceptView(APIView):
 
+    @extend_schema(responses={200:serializers.InvitesListOutputSerializer})
     def post(self, request, pk):
         obj = get_object_or_404(models.Invite, pk=pk, to_user=self.request.user)
         if obj.status != models.Invite.STATUS_PENDING:
@@ -92,6 +100,7 @@ class InvitesAcceptView(APIView):
 
 class InvitesDenyView(APIView):
 
+    @extend_schema(responses={200:serializers.InvitesListOutputSerializer})
     def post(self, request, pk):
         obj = get_object_or_404(models.Invite, pk=pk, to_user=self.request.user)
         if obj.status != models.Invite.STATUS_PENDING:

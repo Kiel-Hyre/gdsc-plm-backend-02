@@ -49,3 +49,7 @@ class InvitesListOutputSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Invite
         fields = '__all__'
+
+
+class DeleteYASG(serializers.Serializer):
+    success = serializers.BooleanField()

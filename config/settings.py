@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'drf_spectacular',
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
@@ -146,6 +147,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
+# https://drf-spectacular.readthedocs.io/en/latest/readme.html
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'GDSC-PLM-BACKEND',
+    'DESCRIPTION': 'Some API',
+    'VERSION': '1.0.0',
+    # OTHER SETTINGS
+}
 
 # Django REST Framework
 # https://www.django-rest-framework.org/api-guide/settings/
@@ -154,7 +162,8 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 
@@ -166,3 +175,4 @@ CORS_ORIGIN_ALLOW_ALL = True
 MIDDLEWARE_CLASSES = (
     'whitenoise.middleware.WhiteNoiseMiddleware',
 )
+
