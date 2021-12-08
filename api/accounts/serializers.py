@@ -61,7 +61,7 @@ class AccountsRegisterSerializer(TokenObtainPairSerializer):
         refresh = self.get_token(user)
         data['refresh'] = str(refresh)
         data['access'] = str(refresh.access_token)
-        data['id'] = self.user.id
+        data['id'] = user.id
         data['username'] = user.username
         data['email'] = user.email
         data['groups'] = user.groups.values_list('name', flat=True)
