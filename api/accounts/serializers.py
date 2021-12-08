@@ -17,9 +17,9 @@ class AccountsTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     def validate(self, attrs):
         data = super().validate(attrs)
+        data['id'] = self.user.id
         data['username'] = self.user.username
         data['email'] = self.user.email
-
         data['groups'] = self.user.groups.values_list('name', flat=True)
         return data
 
@@ -35,6 +35,7 @@ class AccountsTokenRefreshSerializer(TokenRefreshSerializer):
         data = {}
         data['access'] = str(refresh.access_token)
         data['refresh'] = str(RefreshToken.for_user(self.user))
+        data['id'] = self.user.id
         data['username'] = self.user.username
         data['email'] = self.user.email
         data['groups'] = self.user.groups.values_list('name', flat=True)
@@ -60,6 +61,7 @@ class AccountsRegisterSerializer(TokenObtainPairSerializer):
         refresh = self.get_token(user)
         data['refresh'] = str(refresh)
         data['access'] = str(refresh.access_token)
+        data['id'] = self.user.id
         data['username'] = user.username
         data['email'] = user.email
         data['groups'] = user.groups.values_list('name', flat=True)
